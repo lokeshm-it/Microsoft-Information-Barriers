@@ -1,0 +1,40 @@
+flowchart TB
+    subgraph Tenant["Microsoft 365 Tenant — securem365lsb.onmicrosoft.com"]
+        subgraph Purview["Microsoft Purview Compliance Portal"]
+            SEG1["Segment: Finance Department<br/>Filter: department -eq 'Finance'"]
+            SEG2["Segment: HR Department"]
+            POL1["Policy: Finance-HR Block Policy<br/>Assigned: Finance Dept<br/>Blocked: HR Dept<br/>Status: Active"]
+            POL2["Policy: HR-Finance Block Policy<br/>Status: Active"]
+        end
+
+        subgraph Engine["IB Policy Application Engine"]
+            APPLY["Policy Application Job<br/>Status: Completed (100%)"]
+        end
+
+        subgraph EXO["Exchange Online / Azure AD Recipient Store"]
+            REL["InformationBarrierRelationship<br/>Communication1To2: False<br/>Communication2To1: False<br/>Visibility: False (both directions)"]
+        end
+
+        subgraph Workloads["Enforcement Surface"]
+            TEAMS["Microsoft Teams<br/>Chat / Calls / Channels"]
+            SPO["SharePoint Online"]
+            ODB["OneDrive for Business"]
+        end
+
+        U1["Test User 1<br/>(Finance Department)"]
+        U2["Test User 2<br/>(HR Department)"]
+    end
+
+    SEG1 --> POL1
+    SEG2 --> POL1
+    SEG1 --> POL2
+    SEG2 --> POL2
+    POL1 --> APPLY
+    POL2 --> APPLY
+    APPLY --> REL
+    REL --> TEAMS
+    REL --> SPO
+    REL --> ODB
+    U1 -. "Blocked chat: Hello — Failed to send" .-> U2
+    TEAMS -. enforces .-> U1
+    TEAMS -. enforces .-> U2

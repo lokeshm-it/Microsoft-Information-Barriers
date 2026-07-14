@@ -1,0 +1,28 @@
+flowchart TD
+    subgraph Segments
+        S1[Finance Department<br/>department -eq 'Finance']
+        S2[HR Department]
+    end
+
+    subgraph Policies["Directional Policies"]
+        P1["Finance-HR Block Policy<br/>Assigned Segment: Finance Department<br/>Blocked Segment: HR Department<br/>Allow Moderation: False<br/>Status: Active"]
+        P2["HR-Finance Block Policy<br/>Assigned Segment: HR Department<br/>Blocked Segment: Finance Department<br/>Status: Active"]
+    end
+
+    S1 -->|assigned to| P1
+    S2 -->|blocked by| P1
+    S2 -->|assigned to| P2
+    S1 -->|blocked by| P2
+
+    P1 --> AP[Policy Application Engine]
+    P2 --> AP
+
+    AP -->|computes| REL["InformationBarrierRelationship<br/>Finance user <-> HR user"]
+
+    REL --> C1["Communication1To2 = False<br/>(Finance -> HR blocked)"]
+    REL --> C2["Communication2To1 = False<br/>(HR -> Finance blocked)"]
+    REL --> V1["Visibility1To2 = False"]
+    REL --> V2["Visibility2To1 = False"]
+
+    C1 --> TEAMS[Microsoft Teams<br/>enforces at send-time]
+    C2 --> TEAMS

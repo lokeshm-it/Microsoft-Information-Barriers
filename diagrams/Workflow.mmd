@@ -1,0 +1,16 @@
+flowchart LR
+    A[Navigate to Microsoft Purview<br/>Information Barriers] --> B[Create Segment:<br/>Finance Department<br/>department -eq 'Finance']
+    B --> C[Create Segment:<br/>HR Department]
+    C --> D[Create Policy:<br/>Finance-HR Block Policy<br/>Assigned: Finance Dept<br/>Blocked: HR Dept]
+    D --> E[Set Policy Status: Active]
+    E --> F[Create Policy:<br/>HR-Finance Block Policy<br/>reverse direction]
+    F --> G[Run Policy Application]
+    G --> H{Application Status}
+    H -- ApplyInProgress 0% --> H
+    H -- PendingCompletion 100% --> H
+    H -- Completed 100% --> I[Verify via PowerShell<br/>Get-EXOInformationBarrierRelationship]
+    I --> J{Communication1To2 /<br/>Communication2To1}
+    J -- Both False --> K[Validate in Microsoft Teams<br/>Attempt chat message]
+    K --> L[Result: Failed to send<br/>Barrier confirmed enforced]
+    J -- Either True --> M[Investigate: policy not<br/>fully applied / segment mismatch]
+    M --> G
