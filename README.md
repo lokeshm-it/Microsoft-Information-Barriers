@@ -107,7 +107,7 @@ flowchart TB
     TEAMS -. enforces .-> U2
 ```
 
-See [`diagrams/Architecture.mmd`](diagrams/Architecture.mmd) for the standalone diagram source.
+See [`architecture/Architecture.mmd`](architecture/Architecture.mmd) for the standalone diagram source.
 
 ---
 
@@ -549,7 +549,7 @@ Project-16-Microsoft-Information-Barriers/
 ├── images/
 │   └── (22 screenshots, 01–22, referenced throughout this README)
 │
-└── diagrams/
+└── architecture/
     ├── Architecture.mmd
     ├── Workflow.mmd
     └── PolicyFlow.mmd
