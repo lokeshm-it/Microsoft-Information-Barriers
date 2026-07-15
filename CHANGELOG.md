@@ -10,7 +10,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 - Initial repository build: README.md with full implementation walkthrough (22 screenshot-backed steps)
 - `docs/` — Architecture, Implementation-Guide, Validation, Troubleshooting, Lessons-Learned, Best-Practices, References
 - `scripts/` — Connect-ExchangeOnline.ps1, Verify-InformationBarrier.ps1, Validate-IBRelationship.ps1
-- `diagrams/` — Architecture.mmd, Workflow.mmd, PolicyFlow.mmd (Mermaid)
+- `architecture/` — Architecture.mmd, Workflow.mmd, PolicyFlow.mmd (Mermaid)
 - `images/` — 22 screenshots documenting segment creation, policy creation, policy application, PowerShell verification, and Teams enforcement testing
 - LICENSE, CONTRIBUTING.md, SECURITY.md
 
