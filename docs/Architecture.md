@@ -16,7 +16,7 @@ Describe the logical architecture of the Information Barriers control implemente
 
 ## High-Level Architecture Diagram
 
-See [`../diagrams/Architecture.mmd`](../diagrams/Architecture.mmd).
+See [`../architecture/Architecture.mmd`](../architecture/Architecture.mmd).
 
 ```mermaid
 flowchart TB
