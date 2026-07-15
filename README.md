@@ -571,4 +571,4 @@ insider-risk  data-security  purview-compliance
 
 ## Disclaimer
 
-This repository documents a Microsoft 365 / Microsoft Purview lab configuration for portfolio and educational purposes. Screenshots and PowerShell output reference a non-production, sandbox tenant and test accounts only. No production customer data, credentials, or secrets are included in this repository.
+This repository documents a Microsoft 365 / Microsoft Purview lab configuration for portfolio and educational purposes. Screenshots and PowerShell output reference a non-production, sandbox tenant (securem365lsb.onmicrosoft.com) and test accounts only. No production customer data, credentials, or secrets are included in this repository.
